@@ -41,15 +41,15 @@ Cette formule est illustrée ci-dessous :
 
 ```
 for gos_left in range(1, self.max +1):
-            next=[0]*len(expected)
-            for money in range(LENGTH-gos_left*self.lenght):
-                next[money]= max(expected[money], \
-                    (1./self.lenght)*sum([expected[money+k] for k in gain])) # decision stop or go
+    next=[0]*len(expected)
+    for money in range(LENGTH-gos_left*self.lenght):
+        next[money]= max(expected[money], \
+            (1./self.lenght)*sum([expected[money+k] for k in gain])) # decision stop or go
 
-            if sum(next) != 0:
-                expected=next
-            else:
-                break;
+    if sum(next) != 0:
+        expected=next
+    else:
+        break;
 
 ```
 
