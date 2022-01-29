@@ -37,7 +37,7 @@ Le but étant d'optimiser les gains du jeu, nous avons implémenté une variante
 ```BibTeX
      E(money, N)= max(money, (1/n)*E(money+1, N-1)+(1/n)*E(money+2, N-1 + ....+ 1/n)*E(money+k, N-1))) avec k appartient à la liste des faces gagnantes
 ```
-Cette formule est illustrée ci-dessous :
+Cette formule est illustrée ci-dessous avec ce bout de code :
 
 ```BibTeX
 for gos_left in range(1, self.max +1):
@@ -50,7 +50,6 @@ for gos_left in range(1, self.max +1):
         expected=next
     else:
         break;
-
 ```
 
 avec E l'expectation attendue et money = le gain
