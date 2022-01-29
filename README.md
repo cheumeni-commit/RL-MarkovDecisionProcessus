@@ -1,7 +1,6 @@
 # RL-MarkovDecisionProcessus
 
-Ce projet permet de modéliser les gains pouvant être obtenu suite au lancé d'un dé à N face avec Markov Decision Processus(MDP). 
-C'est une forme très simple et accessible de modélisation de l'apprentissage par renforcement (RL).
+Ce projet permet de modéliser les gains obtenus suite à différents lancés d'un dé à N face. Nous appuyons sur le Markov Decision Processus(MDP). Cette méthode utilisée pour modéliser ce jeu, est une forme très simple et accessible de modélisation que nous pouvons ranger dans la famille du Rienforcement Learning(RL).
 
 # Description du problème
 
@@ -29,14 +28,29 @@ C'est une forme très simple et accessible de modélisation de l'apprentissage p
 
 Pour résoudre ce problème, nous avons déterminé :
 
-- les différents états (situation) dans lesquels peut se retrouver le jouer
-- les actions qui peuvent être réalisées depuis chaque états
-- les gains et les pertes potentiels associés à chaque action réalisée par le jouer
+- les différents états (situation) dans lesquels peut se retrouver le jouer {1, 2,....., N}
+- les actions qui peuvent être réalisées depuis chaque états {"go", "stop"}
+- les gains et les pertes potentiels associés à chaque action réalisée par le jouer 0 <= X < N
 
 Le but étant d'optimiser les gains du jeu, nous avons implémenté une variante simplifiée de l'équation de Bellman comme décrit ci-dessous.
 
 ```
      E(money, N)= max(money, (1/n)*E(money+1, N-1)+(1/n)*E(money+2, N-1 + ....+ 1/n)*E(money+k, N-1))) avec k appartient à la liste des faces gagnantes
+```
+Cette formule est illustrée ci-dessous :
+
+```
+for gos_left in range(1, self.max +1):
+            next=[0]*len(expected)
+            for money in range(LENGTH-gos_left*self.lenght):
+                next[money]= max(expected[money], \
+                    (1./self.lenght)*sum([expected[money+k] for k in gain])) # decision stop or go
+
+            if sum(next) != 0:
+                expected=next
+            else:
+                break;
+
 ```
 
 avec E l'expectation attendue et money = le gain
