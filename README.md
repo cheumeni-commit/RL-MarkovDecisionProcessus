@@ -34,12 +34,12 @@ Pour résoudre ce problème, nous avons déterminé :
 
 Le but étant d'optimiser les gains du jeu, nous avons implémenté une variante simplifiée de l'équation de Bellman comme décrit ci-dessous.
 
-```
+```BibTeX
      E(money, N)= max(money, (1/n)*E(money+1, N-1)+(1/n)*E(money+2, N-1 + ....+ 1/n)*E(money+k, N-1))) avec k appartient à la liste des faces gagnantes
 ```
 Cette formule est illustrée ci-dessous :
 
-```
+```BibTeX
 for gos_left in range(1, self.max +1):
     next=[0]*len(expected)
     for money in range(LENGTH-gos_left*self.lenght):
